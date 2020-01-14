@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/sinafinance.iml" filepath="$PROJECT_DIR$/sinafinance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinafinance-cash/sinafinance-cash.iml" filepath="$PROJECT_DIR$/sinafinance-cash/sinafinance-cash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinafinance-cash-fei/sinafinance-cash-fei.iml" filepath="$PROJECT_DIR$/sinafinance-cash-fei/sinafinance-cash-fei.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinafinance-common/sinafinance-common.iml" filepath="$PROJECT_DIR$/sinafinance-common/sinafinance-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinafinance-sso/sinafinance-sso.iml" filepath="$PROJECT_DIR$/sinafinance-sso/sinafinance-sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sso-client2/sso-client2.iml" filepath="$PROJECT_DIR$/sso-client2/sso-client2.iml" />
+    </modules>
+  </component>
+</project>

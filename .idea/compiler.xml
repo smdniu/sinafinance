@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sso-client2" />
+        <module name="sinafinance-sso" />
+        <module name="sinafinance-cash" />
+        <module name="sinafinance-cash-fei" />
+        <module name="sinafinance-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sinafinance" target="1.8" />
+      <module name="sinafinance-cash" target="1.8" />
+      <module name="sinafinance-cash-fei" target="1.8" />
+      <module name="sinafinance-common" target="1.8" />
+      <module name="sinafinance-sso" target="1.8" />
+      <module name="sso-client2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

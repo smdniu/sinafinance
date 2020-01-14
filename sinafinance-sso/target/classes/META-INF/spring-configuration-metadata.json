@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.sinafinance.security.config.core.properties.SecurityProperties",
+      "name": "security",
+      "type": "com.sinafinance.security.config.core.properties.SecurityProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.sinafinance.security.config.core.properties.SecurityProperties",
+      "name": "security.browser",
+      "type": "com.sinafinance.security.config.core.properties.BrowserProperties"
+    },
+    {
+      "sourceType": "com.sinafinance.security.config.core.properties.SecurityProperties",
+      "name": "security.code",
+      "type": "com.sinafinance.security.config.core.properties.ValidateCodeProperties"
+    }
+  ]
+}

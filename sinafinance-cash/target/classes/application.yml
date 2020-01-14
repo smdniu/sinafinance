@@ -1,0 +1,102 @@
+auth-server: http://localhost:8060 # sso-server地址
+security:
+  oauth2:
+    client:
+      client-id: merryyou1
+      client-secret: merryyousecrect1
+      user-authorization-uri: ${auth-server}/oauth/authorize #请求认证的地址
+      access-token-uri: ${auth-server}/oauth/token #请求令牌的地址
+    resource:
+      jwt:
+        key-uri: ${auth-server}/oauth/token_key #解析jwt令牌所需要密钥的地址
+
+
+server:
+  context-path: /cash
+  port: 8083
+  # 下面是配置undertow作为服务器的参数
+  undertow:
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    io-threads: 4
+    # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    worker-threads: 20
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    # 每块buffer的空间大小,越小的空间被利用越充分
+    buffer-size: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    url: jdbc:mysql://111.230.47.79:3307/imooc-demo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT1FROMDUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall
+    logSlowSql: true
+#  redis:
+#    database: 1
+#    host: xxxxx
+#    port: xxxx
+#    password: xxxx
+#    timeout: 10000
+#  activemq:
+#    queueName: mvp.queue
+#    topicName: mvp.topic
+#    #账号密码
+#    user: user
+#    password: user
+#    #URL of the ActiveMQ broker.
+#    broker-url: tcp://localhost:61616
+#    in-memory: false
+#    #必须使用连接池
+#    pool:
+#      #启用连接池
+#      enabled: true
+#      #连接池最大连接数
+#      max-connections: 5
+#      #空闲的连接过期时间，默认为30秒
+#      idle-timeout: 30s
+#    #    jedis:    有默认值，源码:RedisProperties
+#    #      pool:
+#    #        max-active:
+#    #        max-idle:
+#    #        max-wait:
+#    #        min-idle:
+
+mybatis:
+  #扫描实体类所在的包
+  typeAliasesPackage: com.sinafinance.pojo
+  mapper-locations: classpath:mapper/*Mapper.xml
+mapper:
+  #通用mapper所在接口名称 不是包名
+  mappers: com.sinafinance.dao.mappers.MyBaseMapper
+  #数据库 mysql
+  identity: mysql
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+#logging.config:
+#  classpath: test/log4j2_test.xml
+#logging:
+#  level:
+#    com.sinafinance.dao: debug
