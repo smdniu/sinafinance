@@ -24,7 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author liuruizhi
  * @since 2018/12/11
  */
-public class BeanUtils {
+public class BeanUtils  {
     private static Logger logger = LoggerFactory.getLogger(BeanUtils.class);
     private static ConcurrentHashMap<String, BeanCopier> beanCopierMap = new ConcurrentHashMap<>();
     private static Converter converter = new DefaultConverter();
@@ -39,6 +39,7 @@ public class BeanUtils {
         if (source == null || target == null) {
             return;
         }
+
         BeanCopier beanCopier = createBeanCopier(source.getClass(), target.getClass());
         beanCopier.copy(source, target, converter);
     }

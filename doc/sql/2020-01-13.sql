@@ -10,37 +10,49 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2020-01-14 20:32:33
+Date: 2020-01-15 19:59:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for persistent_logins
+-- ----------------------------
+DROP TABLE IF EXISTS `persistent_logins`;
+CREATE TABLE `persistent_logins` (
+  `username` varchar(64) NOT NULL,
+  `series` varchar(64) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `last_used` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`series`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_account
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_account`;
 CREATE TABLE `tb_account` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` varchar(50) NOT NULL,
-  `account` decimal(10,0) NOT NULL DEFAULT '0' COMMENT '余额',
+  `account` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '余额',
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `lastUpdateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_pay_password
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_pay_password`;
 CREATE TABLE `tb_pay_password` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `lastUpdateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_user
@@ -79,7 +91,7 @@ CREATE TABLE `tb_withdrawal_bank` (
   `sequence` bigint(20) DEFAULT NULL COMMENT '排序用，从小到大',
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_withdrawal_info
@@ -88,11 +100,11 @@ DROP TABLE IF EXISTS `tb_withdrawal_info`;
 CREATE TABLE `tb_withdrawal_info` (
   `id` bigint(50) NOT NULL,
   `uid` varchar(50) NOT NULL,
-  `withdrawOrder` varchar(255) NOT NULL COMMENT '提现订单号,系统自动生成的',
+  `withdrawOrder` varchar(255) DEFAULT NULL COMMENT '提现订单号,系统自动生成的',
   `withdrawBankId` varchar(255) NOT NULL COMMENT '用户对应的卡的编号',
-  `withdrawCharge` decimal(10,0) DEFAULT NULL COMMENT '提现手续费',
-  `withdrawRealityTotal` decimal(10,0) DEFAULT NULL COMMENT '实际提现金额',
-  `withdrawApplyTotal` decimal(10,0) DEFAULT NULL COMMENT '申请提现的金额',
+  `withdrawCharge` decimal(10,2) DEFAULT NULL COMMENT '提现手续费',
+  `withdrawRealityTotal` decimal(10,2) DEFAULT NULL COMMENT '实际提现金额',
+  `withdrawApplyTotal` decimal(10,2) DEFAULT NULL COMMENT '申请提现的金额',
   `withdrawApplyTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '申请提现时间',
   `status` bigint(20) NOT NULL COMMENT '提现状态 1：发起提现 2：处理中 3：到账 4：提现失败 5：退回成功',
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -109,8 +121,9 @@ CREATE TABLE `tb_withdrawal_logs` (
   `id` bigint(20) NOT NULL,
   `operater` varchar(255) NOT NULL COMMENT '操作人',
   `withdrawId` bigint(100) NOT NULL COMMENT '交易流水号',
-  `withdrawOrder` varchar(255) NOT NULL COMMENT '提现订单号,系统自动生成',
+  `withdrawOrder` varchar(255) DEFAULT NULL COMMENT '提现订单号,系统自动生成',
   `status` bigint(20) NOT NULL COMMENT '提现的状态  1：发起提现 2：处理中 3：到账 4：提现失败 5：退回成功',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

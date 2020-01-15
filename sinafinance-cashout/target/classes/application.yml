@@ -1,0 +1,26 @@
+server:
+  context-path: /cash
+  port: 8083
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: false
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://111.230.47.79:3307/cash-test?serverTimezone=UTC
+
+auth-server: http://localhost:8060 # sso-server地址
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: clientsecrect1
+      user-authorization-uri: ${auth-server}/oauth/authorize #请求认证的地址
+      access-token-uri: ${auth-server}/oauth/token #请求令牌的地址
+    resource:
+      jwt:
+        key-uri: ${auth-server}/oauth/token_key #解析jwt令牌所需要密钥的地址

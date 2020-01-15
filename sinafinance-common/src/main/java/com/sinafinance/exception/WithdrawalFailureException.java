@@ -3,8 +3,6 @@ package com.sinafinance.exception;
 /**
  * 系统异常
  *
- * @author liuruizhi
- * @since 2018/11/26
  */
 public class WithdrawalFailureException extends RuntimeException {
 

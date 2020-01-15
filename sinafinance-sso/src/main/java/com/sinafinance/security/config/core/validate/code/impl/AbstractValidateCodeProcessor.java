@@ -5,6 +5,7 @@ package com.sinafinance.security.config.core.validate.code.impl;
 
 import java.util.Map;
 
+import com.sinafinance.security.config.core.validate.code.ValidateCode;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
-import com.sinafinance.security.config.core.validate.code.ValidateCode;
 import com.sinafinance.security.config.core.validate.code.ValidateCodeException;
 import com.sinafinance.security.config.core.validate.code.ValidateCodeGenerator;
 import com.sinafinance.security.config.core.validate.code.ValidateCodeProcessor;

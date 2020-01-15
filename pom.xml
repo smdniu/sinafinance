@@ -10,26 +10,32 @@
         <module>sinafinance-sso</module>
         <module>sinafinance-common</module>
         <module>sso-client2</module>
-        <module>sinafinance-cash-fei</module>
+        <module>sinafinance-cashout</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
-        <mybatis.typehandler.version>1.0.1</mybatis.typehandler.version>
+
         <project.jdk.version>1.8</project.jdk.version>
         <project.source.encoding>UTF-8</project.source.encoding>
         <project.test.skip>false</project.test.skip>
+        <project-version>1.0-SNAPSHOT</project-version>
+
+        <mybatis.typehandler.version>1.0.1</mybatis.typehandler.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <springdata-redis.version>1.6.4.RELEASE</springdata-redis.version>
+
         <jackson-core.version>2.9.9</jackson-core.version>
         <jackson-annotations.version>2.9.9</jackson-annotations.version>
         <jackson-databind.version>2.9.9.3</jackson-databind.version>
         <httpclient.version>4.5.2</httpclient.version>
+
         <aspectj.version>1.7.4</aspectj.version>
         <mybatis.version>3.4.1</mybatis.version>
         <mysql.connector.version>5.1.25</mysql.connector.version>
         <mybatis.spring.version>1.2.4</mybatis.spring.version>
+
         <slf4j.version>1.7.21</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <javax.version>3.0.1</javax.version>
@@ -47,6 +53,9 @@
         <hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
         <guava.version>19.0</guava.version>
         <poi.version>3.17</poi.version>
+
+
+
     </properties>
 
 <!--    <profiles>-->
@@ -91,6 +100,38 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <artifactId>sinafinance-cashout</artifactId>
+                <groupId>${groupId}</groupId>
+                <version>${project-version}</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>sinafinance-cash</artifactId>
+                <groupId>${groupId}</groupId>
+                <version>${project-version}</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>sso-client2</artifactId>
+                <groupId>${groupId}</groupId>
+                <version>${project-version}</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>sinafinance-sso</artifactId>
+                <groupId>${groupId}</groupId>
+                <version>${project-version}</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>sinafinance-common</artifactId>
+                <groupId>${groupId}</groupId>
+                <version>${project-version}</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -267,12 +308,4 @@
         </plugins>
     </build>
 
-<!--    <modules>-->
-<!--        <module>../imooc-security-app</module>-->
-<!--        <module>../imooc-security-browser</module>-->
-<!--        <module>../imooc-security-core</module>-->
-<!--        <module>../imooc-security-demo</module>-->
-<!--        <module>sso-client1</module>-->
-<!--        <module>sso-client2</module>-->
-<!--    </modules>-->
 </project>

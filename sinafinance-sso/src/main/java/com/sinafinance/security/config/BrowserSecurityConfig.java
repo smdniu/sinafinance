@@ -5,7 +5,6 @@ package com.sinafinance.security.config;
 
 import javax.sql.DataSource;
 
-import com.sinafinance.security.config.core.authentication.AbstractChannelSecurityConfig;
 import com.sinafinance.security.config.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.sinafinance.security.config.core.properties.SecurityConstants;
 import com.sinafinance.security.config.core.properties.SecurityProperties;

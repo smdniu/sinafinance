@@ -5,8 +5,8 @@ server:
 security:
   oauth2:
     client:
-      client-id: merryyou2
-      client-secret: merryyousecrect2
+      client-id: client2
+      client-secret: clientsecrect2
       user-authorization-uri: ${auth-server}/oauth/authorize
       access-token-uri: ${auth-server}/oauth/token
     resource:
