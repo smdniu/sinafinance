@@ -23,6 +23,9 @@ public enum ErrorCode {
 
     // 提现功能错误码
     PAY_PASSWD_WRONG("支付密码错误，请重新输入。", "10001"),
+    BAND_BANKNO_NOT_EXIT("银行卡号不存在","10002"),
+    WITHDRAWALI_NOT_EXIT("该交易已通过审核，请勿重复提交","10003"),
+    WITHDRAWPROCESS_NOT_EXIT("不存在处理中的交易，请勿重新提交","10004"),
 
 
     // 第三方支付接口错误
@@ -30,6 +33,7 @@ public enum ErrorCode {
     ALIPAY_RESP_NULL("第三方支付接口返回值为空","20002"),
     ALIPAY_RESP_CODE_ERROR("第三方支付接口返回值状态码错误","20003"),
     ALIPAY_RESP_MSG_ERROR("第三方支付接口返回值信息不正确","20004"),
+    NOTIFY_ERROR("第三方支付结果回调错误","20005"),
 
 
     ;

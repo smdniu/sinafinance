@@ -1,7 +1,9 @@
 package cn.mrsunflower.sinafinancecashfei.service.impl;
 
+import cn.mrsunflower.sinafinancecashfei.service.AccountService;
 import cn.mrsunflower.sinafinancecashfei.service.PreWithdrawal;
 import com.sinafinance.vo.BaseResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,9 @@ import java.util.Map;
 
 @Service
 public class PreWithdrawalImpl implements PreWithdrawal {
+    @Autowired
+    AccountService accountService;
+
     /**
      * 计算提现金额
      * @param withdrawApply
@@ -19,7 +24,11 @@ public class PreWithdrawalImpl implements PreWithdrawal {
      * @return
      * @throws Exception
      */
-    public Map countWithdraw(long withdrawApply) throws Exception {
+    public Map countWithdraw(long withdrawApply,long userId) throws Exception {
+        /**
+         * 1.提现额度与总余额比较，如果全部提现，则服务费从提现金额中扣除，否则总共扣款为提现额+服务费
+         * 2.费率为0.10%
+         */
         //logger.info("WithdrawalController.countWithdraw.start");
         //提现申请总数
         BigDecimal withdrawApplyTotal = new BigDecimal(withdrawApply);
@@ -30,22 +39,14 @@ public class PreWithdrawalImpl implements PreWithdrawal {
         //提现实际总数
         BigDecimal withdrawRealityTotal = null;
 
-        //计算手续费与实际提现金额
-        //1500之内0.0055
-        //1500之外0.007
-        BigDecimal min = BigDecimal.valueOf(1500L);
-        if ((withdrawApplyTotal.compareTo(min)) > 0) {
-            // 计算提现手续费
-            withdrawCharge = (new BigDecimal(2)
-                    .add(withdrawApplyTotal.multiply(new BigDecimal(0.0055))))
-                    .setScale(2, BigDecimal.ROUND_HALF_UP);
-            // 计算实际提现金额
-            withdrawRealityTotal = withdrawApplyTotal.subtract(withdrawCharge);
-        } else {
-            // 计算提现手续费
-            withdrawCharge = withdrawApplyTotal.multiply(new BigDecimal(0.007)).setScale(2,
-                    BigDecimal.ROUND_HALF_UP);                // 实际提现金额
-            //计算实际提现金额
+        //查询账户余额
+        BigDecimal account = accountService.findAccountByUid(userId);
+        if(account != null){
+            withdrawCharge = getWithdrawCharge(withdrawApplyTotal);
+            // 全部提现
+            if (account.compareTo(withdrawApplyTotal) == 0){
+                withdrawApplyTotal = withdrawApplyTotal.divide(withdrawCharge);
+            }
             withdrawRealityTotal = withdrawApplyTotal.subtract(withdrawCharge);
         }
 
@@ -54,6 +55,33 @@ public class PreWithdrawalImpl implements PreWithdrawal {
         result.put("withdrawApplyTotal", withdrawApplyTotal);
 
         return result;
+    }
+
+    /**
+     * 计算服务费
+     * @param withdrawApplyTotal
+     * @return
+     */
+    private BigDecimal getWithdrawCharge(BigDecimal withdrawApplyTotal) {
+        //计算手续费与实际提现金额
+        //1500之内0.0055
+        //1500之外0.007
+        BigDecimal min = BigDecimal.valueOf(1500L);
+        BigDecimal withdrawCharge;
+        if ((withdrawApplyTotal.compareTo(min)) > 0) {
+            // 计算提现手续费
+            withdrawCharge = (new BigDecimal(2)
+                    .add(withdrawApplyTotal.multiply(new BigDecimal(0.0055))))
+                    .setScale(2, BigDecimal.ROUND_HALF_UP);
+            // 计算实际提现金额
+        } else {
+            // 计算提现手续费
+            withdrawCharge = withdrawApplyTotal.multiply(new BigDecimal(0.007)).setScale(2,
+                    BigDecimal.ROUND_HALF_UP);                // 实际提现金额
+            //计算实际提现金额
+
+        }
+        return withdrawCharge;
     }
 
     @Override

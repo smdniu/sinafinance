@@ -1,6 +1,7 @@
 package cn.mrsunflower.sinafinancecashfei.controller;
 
 import cn.mrsunflower.sinafinancecashfei.pojo.WithdrawalInfo;
+import cn.mrsunflower.sinafinancecashfei.service.AlipayService;
 import cn.mrsunflower.sinafinancecashfei.service.impl.PreWithdrawalImpl;
 import cn.mrsunflower.sinafinancecashfei.service.impl.WithdrawalServiceImpl;
 import com.sinafinance.annotation.LoggerOut;
@@ -9,6 +10,7 @@ import com.sinafinance.vo.BaseResponse;
 import com.sinafinance.vo.CashOutRequest;
 import com.sinafinance.vo.PageResult;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,17 @@ public class WithdrawalController {
     @Autowired
     private WithdrawalServiceImpl withdrawalService;
 
+    @Autowired
+    private AlipayService alipayService;
+
+//    @LoggerOut
+//    @RequestMapping("/test")
+//    public BaseResponse test(@RequestBody CashOutRequest request, Authentication user){
+//        String uid = user.getName();
+//        return BaseResponse.newSuccResponse(uid);
+//
+//    }
+
     /**
      * 提现金额计算
      */
@@ -35,7 +48,7 @@ public class WithdrawalController {
                                       long withdrawApply, Long userId) {
         //logger.info("WithdrawalController.countWithdraw.start");
         try {
-            Map map = preWithdrawalImpl.countWithdraw(withdrawApply);
+            Map map = preWithdrawalImpl.countWithdraw(withdrawApply,userId);
 
             //创建结果返回值
             BaseResponse baseResponse = new BaseResponse();
@@ -58,10 +71,11 @@ public class WithdrawalController {
      * @return
      */
     @PostMapping(value = "/withdrawal/apply")
-    public BaseResponse applyWithDrawal(@RequestBody CashOutRequest request, String uid) {
+    public BaseResponse applyWithDrawal(@RequestBody CashOutRequest request,Authentication user) {
 
         /*uid,用户id,可以改成从token中获取*/
-
+//        String uid = user.getName();
+        String uid = "13426009535";
         try {
             // 验证参数
             if (uid == null) {
@@ -110,7 +124,7 @@ public class WithdrawalController {
     }
 
     /**
-     * 根据提现订单号获取订单的详细情况
+     * 根据提现订单号获取交易详情
      */
     @GetMapping(value = "/withdrawal/order")
     public BaseResponse withdrawalOrder(String withdrawalOrder,String withdrawalStatus) {
@@ -138,27 +152,11 @@ public class WithdrawalController {
     }
 
 
-    @RequestMapping("/notify")
-    public void notifyLogic(HttpServletRequest request) {
-        System.out.println("支付成功回调。。。。");
-        try {
-            InputStream inputStream = (InputStream) request.getInputStream();
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-            byte[] buffer = new byte[1024];
-            int len = 0;
-            while ((len = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, len);
-            }
-            outputStream.close();
-            inputStream.close();
-            String result = new String(outputStream.toByteArray(), "utf-8");
-            System.out.println(result);
-            //  alipayService.changed();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @LoggerOut
+    @GetMapping("/queryPayStatus")
+    public BaseResponse queryPayStatus(String id,String orderId){
+        return  alipayService.query(id,orderId);
     }
+
 
 }

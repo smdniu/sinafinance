@@ -68,7 +68,13 @@ public class WithdrawalBankController {
         }
     }
 
-    //可提现银行列表
+    /**
+     * 可提现银行卡列表查询
+     * @param request
+     * @param response
+     * @param userId
+     * @return
+     */
     @RequestMapping(value = "/withdrawalBank/list", method = {RequestMethod.GET, RequestMethod.POST})
     public BaseResponse withdrawalBankList(HttpServletRequest request, HttpServletResponse response, Long userId ){
         try {

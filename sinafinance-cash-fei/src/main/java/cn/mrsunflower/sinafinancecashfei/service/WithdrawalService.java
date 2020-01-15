@@ -1,9 +1,7 @@
 package cn.mrsunflower.sinafinancecashfei.service;
 
 import cn.mrsunflower.sinafinancecashfei.pojo.WithdrawalInfo;
-import com.sinafinance.vo.BaseResponse;
-import com.sinafinance.vo.CashOutRequest;
-import com.sinafinance.vo.PageResult;
+import com.sinafinance.vo.*;
 
 import java.util.List;
 
@@ -18,11 +16,13 @@ public interface WithdrawalService {
 
     /**
      * 审核提现申请
-     * @param userId
-     * @param cashId
-     * @param type 0 表示失败,1表示通过
+     * @param request
+     *      *@param userId
+     *      * @param withdrawalId
+     *      * @param type 0 表示失败,1表示通过
      * @return
      */
-    BaseResponse check(Long  userId,Long cashId,int type);
+    BaseResponse check(CheckWithdrawRequest request);
 
+    BaseResponse notifyLogic(NotifyRequest request);
 }

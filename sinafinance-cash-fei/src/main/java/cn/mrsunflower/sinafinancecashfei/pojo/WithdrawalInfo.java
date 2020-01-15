@@ -1,5 +1,6 @@
 package cn.mrsunflower.sinafinancecashfei.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,7 +21,8 @@ public class WithdrawalInfo {
     @Id
     private Long id;
     //提现申请人ID
-    private Long uid;
+    @Column(name = "uid")
+    private String uid;
     //提现订单号,系统自动生成的
     @Column(name = "withdrawOrder")
     private String withdrawOrder;
@@ -38,6 +40,7 @@ public class WithdrawalInfo {
     private BigDecimal withdrawApplyTotal;
     //申请提现的时间
     @Column(name = "withdrawApplyTime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date withdrawApplyTime;
     /**
      * 提现状态:
@@ -51,12 +54,15 @@ public class WithdrawalInfo {
     private Long status;
     //创建时间
     @Column(name = "createTime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
     //最后一次修改时间
     @Column(name = "lastUpdateTime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date lastUpdateTime;
     //预计到账时间
     @Column(name = "expectTime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date expectTime;
 
 }

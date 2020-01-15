@@ -10,7 +10,7 @@ public interface PreWithdrawal {
      * @return
      * @throws Exception
      */
-     Map countWithdraw(long withdrawApply) throws Exception;
+     Map countWithdraw(long withdrawApply,long userId) throws Exception;
 
     /**
      * 是否实名制

@@ -9,7 +9,6 @@
     <modules>
         <module>sinafinance-sso</module>
         <module>sinafinance-common</module>
-        <module>sinafinance-cash</module>
         <module>sso-client2</module>
         <module>sinafinance-cash-fei</module>
     </modules>

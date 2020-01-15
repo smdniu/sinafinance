@@ -1,5 +1,8 @@
 package com.sinafinance.vo;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -8,28 +11,28 @@ import java.math.BigDecimal;
  * @author: sunmengdi
  * @time: 2020/1/9 17:52
  */
-
 public class CashOutRequest {
     @Override
     public String toString() {
         return "CashOutRequest{" +
                 "uid='" + uid + '\'' +
-                ", money=" + money +
-                ", bandAccountType='" + bandAccountType + '\'' +
-                ", bandAccountId='" + bandAccountId + '\'' +
+                ", withdrawApplyTotal=" + withdrawApplyTotal +
+                ", withdrawCharge=" + withdrawCharge +
+                ", withdrawBankId='" + withdrawBankId + '\'' +
                 ", payPassword='" + payPassword + '\'' +
                 '}';
     }
 
     //当前用户
     private String uid;
-    //提现金额
+    //申请提现金额
     @NotNull
-    private BigDecimal money;
+    private BigDecimal withdrawApplyTotal;
+    //提现手续费
     @NotNull
-    private String bandAccountType;
+    private BigDecimal withdrawCharge;
     @NotNull
-    private String bandAccountId;
+    private String withdrawBankId;//卡号
     @NotNull
     private String payPassword;
 
@@ -41,29 +44,28 @@ public class CashOutRequest {
         this.uid = uid;
     }
 
-    public BigDecimal getMoney() {
-        return money;
+    public BigDecimal getWithdrawApplyTotal() {
+        return withdrawApplyTotal;
     }
 
-    public void setMoney(BigDecimal money) {
-        this.money = money;
+    public void setWithdrawApplyTotal(BigDecimal withdrawApplyTotal) {
+        this.withdrawApplyTotal = withdrawApplyTotal;
     }
 
-
-    public String getBandAccountType() {
-        return bandAccountType;
+    public BigDecimal getWithdrawCharge() {
+        return withdrawCharge;
     }
 
-    public void setBandAccountType(String bandAccountType) {
-        this.bandAccountType = bandAccountType;
+    public void setWithdrawCharge(BigDecimal withdrawCharge) {
+        this.withdrawCharge = withdrawCharge;
     }
 
-    public String getBandAccountId() {
-        return bandAccountId;
+    public String getWithdrawBankId() {
+        return withdrawBankId;
     }
 
-    public void setBandAccountId(String bandAccountId) {
-        this.bandAccountId = bandAccountId;
+    public void setWithdrawBankId(String withdrawBankId) {
+        this.withdrawBankId = withdrawBankId;
     }
 
     public String getPayPassword() {
