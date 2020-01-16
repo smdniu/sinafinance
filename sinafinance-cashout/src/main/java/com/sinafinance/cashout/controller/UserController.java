@@ -1,5 +1,6 @@
 package com.sinafinance.cashout.controller;
 
+import com.sinafinance.annotation.LoggerOut;
 import com.sinafinance.cashout.service.UserService;
 import com.sinafinance.vo.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ public class UserController {
 
     private UserService userService;
 
-
+    @LoggerOut
     @PostMapping(value = "/findAllUser")
     public BaseResponse findAllUser(@RequestParam int pageNo, @RequestParam int pageSize) {
         return BaseResponse.newSuccResponse(userService.findAllUser(pageNo, pageSize));
     }
-
+    @LoggerOut
     @PostMapping("/findByUsername")
     public BaseResponse findByUsername(@RequestParam(value = "username") String username) {
         return BaseResponse.newSuccResponse(userService.findByUsername(username));

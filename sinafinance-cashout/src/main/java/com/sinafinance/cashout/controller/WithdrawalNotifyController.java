@@ -23,11 +23,4 @@ public class WithdrawalNotifyController {
        return withdrawalService.notifyLogic(request);
     }
 
-//    @LoggerOut
-//    @GetMapping("/queryPayStatus")
-//    public BaseResponse queryPayStatus(String id,String orderId){
-//        return  withdrawalService.query(id,orderId);
-//    }
-
-
 }

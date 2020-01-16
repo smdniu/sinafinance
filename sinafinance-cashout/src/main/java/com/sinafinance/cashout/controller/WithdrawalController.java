@@ -47,6 +47,7 @@ public class WithdrawalController {
     /**
      * 提现金额计算
      */
+    @LoggerOut
     @GetMapping(value = "/withdrawal/count")
     public BaseResponse countWithdraw(HttpServletRequest request, HttpServletResponse response,
                                       long withdrawApply, Long userId) {
@@ -73,6 +74,7 @@ public class WithdrawalController {
      * @param request 提现的一些基本信息
      * @return
      */
+    @LoggerOut
     @PostMapping(value = "/withdrawal/apply")
     public BaseResponse applyWithDrawal(@RequestBody CashOutRequest request) {
 
@@ -86,13 +88,6 @@ public class WithdrawalController {
             }
             request.setUid(uid);
             BaseResponse baseResponse = withdrawalService.cashOut(request);
-
-            /**
-             *发送消息通知
-             * ps:这里没有实现,有空可以实现一下
-             */
-            //sendSmsNotice(withdrawal, userId, seller, billMoney, withdrawApplyTotal);
-
             return baseResponse;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -104,6 +99,7 @@ public class WithdrawalController {
     /**
      * 分页查询提现信息
      */
+    @LoggerOut
     @GetMapping(value = "/withdrawal/applyList")
     public BaseResponse applyWithDrawalList( Long userId, int currentPageNum, int currentPageSize) {
         //logger.info("WithdrawalController.applyWithDrawalList.start");

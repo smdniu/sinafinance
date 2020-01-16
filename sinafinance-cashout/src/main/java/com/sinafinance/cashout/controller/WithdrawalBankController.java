@@ -1,5 +1,6 @@
 package com.sinafinance.cashout.controller;
 
+import com.sinafinance.annotation.LoggerOut;
 import com.sinafinance.pojo.WithdrawalBank;
 import com.sinafinance.cashout.service.impl.WithdrawalBankServiceImpl;
 import com.sinafinance.enums.ResponseCode;
@@ -24,6 +25,7 @@ public class WithdrawalBankController {
     /**
      * 添加提现帐户
      */
+    @LoggerOut
     @PostMapping(value = "/withdrawalBank/add")
     public BaseResponse addWithdrawalBank(HttpServletRequest request, HttpServletResponse response, @RequestBody WithdrawalBank withdrawalBank) {
         try {
@@ -75,6 +77,7 @@ public class WithdrawalBankController {
      * @param userId
      * @return
      */
+    @LoggerOut
     @RequestMapping(value = "/withdrawalBank/list", method = {RequestMethod.GET, RequestMethod.POST})
     public BaseResponse withdrawalBankList(HttpServletRequest request, HttpServletResponse response, Long userId ){
         try {

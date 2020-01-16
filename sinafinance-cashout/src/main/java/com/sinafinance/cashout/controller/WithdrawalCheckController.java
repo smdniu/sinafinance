@@ -1,5 +1,6 @@
 package com.sinafinance.cashout.controller;
 
+import com.sinafinance.annotation.LoggerOut;
 import com.sinafinance.cashout.service.WithdrawalService;
 import com.sinafinance.vo.BaseResponse;
 import com.sinafinance.vo.CheckWithdrawRequest;
@@ -23,6 +24,7 @@ public class WithdrawalCheckController {
      * @param request
      * @return
      */
+    @LoggerOut
     @PostMapping("/WithdrawalCheck/check")
     public BaseResponse check(@RequestBody CheckWithdrawRequest request) {
         BaseResponse check = withdrawalService.check(request);
