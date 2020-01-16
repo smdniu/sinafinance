@@ -1,7 +1,7 @@
 package com.sinafinance.cashout.service.impl;
 
 import com.sinafinance.cashout.mapper.WithdrawalBankMapper;
-import com.sinafinance.cashout.pojo.WithdrawalBank;
+import com.sinafinance.pojo.WithdrawalBank;
 import com.sinafinance.cashout.service.WithdrawalBankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-@Service
+@Service("withdrawalBankService")
 public class WithdrawalBankServiceImpl implements WithdrawalBankService {
     @Autowired
     private WithdrawalBankMapper withdrawalBankMapper;

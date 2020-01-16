@@ -4,15 +4,14 @@ import com.alipay.api.response.AlipayFundTransToaccountTransferResponse;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sinafinance.cashout.mapper.*;
-import com.sinafinance.cashout.pojo.*;
 import com.sinafinance.cashout.service.AlipayService;
 import com.sinafinance.cashout.service.WithdrawalService;
 import com.sinafinance.enums.AccountStateEnum;
-import com.sinafinance.enums.WithdrawalConstant;
 import com.sinafinance.enums.WithdrawalStateEnum;
 import com.sinafinance.exception.ErrorCode;
 import com.sinafinance.exception.SinafinanceException;
 import com.sinafinance.exception.WithdrawalFailureException;
+import com.sinafinance.pojo.*;
 import com.sinafinance.vo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,10 +29,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.sinafinance.cashout.util.WithdrawalLogsUtils.creatWithdrawalLogs;
+import static com.sinafinance.utils.WithdrawalLogsUtils.creatWithdrawalLogs;
 
 @SuppressWarnings("all")
-@Transactional(rollbackFor = SinafinanceException.class)
+//@Transactional(rollbackFor = SinafinanceException.class)
 @Service("withdrawalService")
 public class WithdrawalServiceImpl implements WithdrawalService {
     private Logger logger = LoggerFactory.getLogger(WithdrawalServiceImpl.class);
@@ -156,6 +155,7 @@ public class WithdrawalServiceImpl implements WithdrawalService {
      * @param money 增加或者减少的金额
      * @param type  0,减少,1增加
      */
+    @Transactional(rollbackFor = SinafinanceException.class,isolation = Isolation.REPEATABLE_READ)
     public Boolean updataAccount(String uid, BigDecimal money, int type) {
         //检查是否可以扣减账户余额
         boolean idDeduction=true;//是否可以扣减
@@ -226,6 +226,7 @@ public class WithdrawalServiceImpl implements WithdrawalService {
     }
 
     @Override
+    @Transactional(rollbackFor = SinafinanceException.class,isolation = Isolation.REPEATABLE_READ)
     public BaseResponse check(CheckWithdrawRequest request) {
         Example example = new Example(WithdrawalInfo.class);
         Example.Criteria criteria = example.createCriteria();
@@ -291,7 +292,7 @@ public class WithdrawalServiceImpl implements WithdrawalService {
                     logger.info("第三方提现申请提交成功");
                     withdrawalInfo.setWithdrawOrder(alipayResponse.getOrderId());
                     withdrawalInfo.setStatus(WithdrawalStateEnum.PROCESSING.getCode());//2 处理中
-                    updateWithdrawalStatus(request.getWithdrawalId(),alipayResponse.getOrderId(), WithdrawalConstant.PROCESSING.getStatus());
+                    updateWithdrawalStatus(request.getWithdrawalId(),alipayResponse.getOrderId(), WithdrawalStateEnum.PROCESSING.getCode());
 
                     //启动一个线程异步回调第三方提现结果
 

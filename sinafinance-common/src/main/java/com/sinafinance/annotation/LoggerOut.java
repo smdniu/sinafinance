@@ -9,8 +9,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author liuruizhi
- * @since 2018/11/26
+ * @description:
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

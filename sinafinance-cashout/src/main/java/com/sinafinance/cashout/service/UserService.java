@@ -1,7 +1,7 @@
 package com.sinafinance.cashout.service;
 
 import com.github.pagehelper.PageInfo;
-import com.sinafinance.cashout.pojo.User;
+import com.sinafinance.pojo.User;
 
 /**
  * @description:

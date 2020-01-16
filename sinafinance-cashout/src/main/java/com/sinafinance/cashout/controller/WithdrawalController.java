@@ -1,7 +1,7 @@
 package com.sinafinance.cashout.controller;
 
 import com.sinafinance.annotation.LoggerOut;
-import com.sinafinance.cashout.pojo.WithdrawalInfo;
+import com.sinafinance.pojo.WithdrawalInfo;
 import com.sinafinance.cashout.service.AlipayService;
 import com.sinafinance.cashout.service.impl.PreWithdrawalImpl;
 import com.sinafinance.cashout.service.impl.WithdrawalServiceImpl;
@@ -20,6 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
+/**
+ * @description: 用户提现
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 @RestController
 public class WithdrawalController {
     @Autowired

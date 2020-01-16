@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * ClassName: LoggerInterceptor
  *
- * @author attractor
+ * @author
  *         功能描述：Logger AOP日志输出，统计调用执行时间和日志
  */
 @Component

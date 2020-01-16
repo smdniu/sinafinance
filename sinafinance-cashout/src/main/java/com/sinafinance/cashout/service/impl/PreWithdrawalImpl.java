@@ -9,6 +9,11 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @description:
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 @Service("preWithdrawal")
 public class PreWithdrawalImpl implements PreWithdrawal {
     @Autowired

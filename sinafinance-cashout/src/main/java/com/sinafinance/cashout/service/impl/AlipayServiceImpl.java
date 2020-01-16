@@ -32,7 +32,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @description:
+ * @description: 第三方转账service
  * @author: sunmengdi
  * @time: 2020/1/9 16:45
  */

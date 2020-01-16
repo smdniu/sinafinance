@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created on 2017/12/26.
- *
- * @author zlf
- * @since 1.0
+ * @description:
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
  */
 @SpringBootApplication
 @RestController

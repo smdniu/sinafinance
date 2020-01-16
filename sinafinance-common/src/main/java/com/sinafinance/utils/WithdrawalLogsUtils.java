@@ -1,8 +1,8 @@
-package com.sinafinance.cashout.util;
+package com.sinafinance.utils;
 
-import com.sinafinance.cashout.pojo.WithdrawalInfo;
-import com.sinafinance.cashout.pojo.WithdrawalLogs;
 import com.sinafinance.enums.WithdrawalStateEnum;
+import com.sinafinance.pojo.WithdrawalInfo;
+import com.sinafinance.pojo.WithdrawalLogs;
 import com.sinafinance.vo.CashOutRequest;
 
 public class WithdrawalLogsUtils {

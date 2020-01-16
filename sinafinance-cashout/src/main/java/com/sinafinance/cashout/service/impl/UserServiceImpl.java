@@ -3,7 +3,7 @@ package com.sinafinance.cashout.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sinafinance.cashout.mapper.UserMapper;
-import com.sinafinance.cashout.pojo.User;
+import com.sinafinance.pojo.User;
 import com.sinafinance.cashout.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

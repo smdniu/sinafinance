@@ -1,6 +1,6 @@
 package com.sinafinance.cashout.controller;
 
-import com.sinafinance.cashout.pojo.WithdrawalBank;
+import com.sinafinance.pojo.WithdrawalBank;
 import com.sinafinance.cashout.service.impl.WithdrawalBankServiceImpl;
 import com.sinafinance.enums.ResponseCode;
 import com.sinafinance.vo.BaseResponse;

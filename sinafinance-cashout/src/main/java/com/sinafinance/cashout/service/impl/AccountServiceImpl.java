@@ -1,7 +1,7 @@
 package com.sinafinance.cashout.service.impl;
 
 import com.sinafinance.cashout.mapper.AccountMapper;
-import com.sinafinance.cashout.pojo.Account;
+import com.sinafinance.pojo.Account;
 import com.sinafinance.cashout.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,11 @@ import tk.mybatis.mapper.entity.Example;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * @description: 账户service
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
 

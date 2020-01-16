@@ -1,10 +1,9 @@
 package com.sinafinance.enums;
 
 /**
- * EnumHelper
- *
- * @author liuruizhi
- * @since 2018/11/5
+ * @description:
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
  */
 public class EnumHelper {
 

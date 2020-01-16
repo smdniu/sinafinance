@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright (C) 2016. Attractor, Inc. All Rights Reserved.
-  -->
 
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -24,7 +21,7 @@
         <!--</triggeringPolicy>-->
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>sinafinance/sinafinancelog.%d{yyyy-MM-dd-HH}.%i.gz</fileNamePattern>
+            <fileNamePattern>cashout/cashoutlog.%d{yyyy-MM-dd-HH}.%i.gz</fileNamePattern>
             <MaxHistory>5</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>128MB</maxFileSize>

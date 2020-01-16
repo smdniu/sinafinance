@@ -1,4 +1,4 @@
-package com.sinafinance.cashout.pojo;
+package com.sinafinance.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

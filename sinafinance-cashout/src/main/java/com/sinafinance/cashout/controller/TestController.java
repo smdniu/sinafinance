@@ -1,9 +1,8 @@
 package com.sinafinance.cashout.controller;
 
-import com.sinafinance.cashout.pojo.WithdrawalBank;
-import com.sinafinance.cashout.pojo.WithdrawalInfo;
+import com.sinafinance.pojo.WithdrawalBank;
+import com.sinafinance.pojo.WithdrawalInfo;
 import com.sinafinance.vo.CashOutRequest;
-import org.springframework.data.redis.core.index.Indexed;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

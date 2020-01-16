@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+/**
+ * @description: 回调接口
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 @RestController
 public class WithdrawalNotifyController {
     @Autowired

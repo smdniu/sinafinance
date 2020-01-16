@@ -2,6 +2,11 @@ package com.sinafinance.enums;
 
 import com.sinafinance.exception.SinafinanceException;
 
+/**
+ * @description:
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 public enum WithdrawalStateEnum {
 
     //交易状态 1：发起提现 2：处理中 3：到账 4：提现失败 5：退回成功

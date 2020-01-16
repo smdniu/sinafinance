@@ -2,7 +2,11 @@ package com.sinafinance.enums;
 
 import com.sinafinance.exception.SinafinanceException;
 import org.apache.commons.lang3.StringUtils;
-
+/**
+ * @description:
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 public enum AccountStateEnum {
     //normal 1:正常  freeze 2:冻结
     NORMAL("1","正常"),

@@ -1,5 +1,10 @@
 package com.sinafinance.enums;
 
+/**
+ * @description:
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 public enum ResponseCode {
     SUCCESS("20000"),//成功
     ERROR("50000"),//成功

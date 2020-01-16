@@ -1,4 +1,4 @@
-package com.sinafinance.cashout.pojo;
+package com.sinafinance.pojo;
 
 import lombok.*;
 

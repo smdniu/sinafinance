@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @description: 提现审核类
+ * @author: sunmengdi
+ * @time: 2020/1/7 14:06
+ */
 @RestController
 public class WithdrawalCheckController {
     @Autowired

@@ -1,7 +1,7 @@
 package com.sinafinance.cashout.service;
 
 
-import com.sinafinance.cashout.pojo.Account;
+import com.sinafinance.pojo.Account;
 
 import java.math.BigDecimal;
 

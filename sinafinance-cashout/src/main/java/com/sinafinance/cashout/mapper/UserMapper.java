@@ -1,6 +1,6 @@
 package com.sinafinance.cashout.mapper;
 
-import com.sinafinance.cashout.pojo.User;
+import com.sinafinance.pojo.User;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface UserMapper extends Mapper<User> {

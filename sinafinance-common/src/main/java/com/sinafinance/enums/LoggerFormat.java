@@ -2,7 +2,7 @@ package com.sinafinance.enums;
 
 /**
  * ClassName: LoggerFormat
- * @author attractor
+ * @author
  * @version
  */
 public enum LoggerFormat {

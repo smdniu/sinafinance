@@ -1,6 +1,6 @@
 package com.sinafinance.cashout.service;
 
-import com.sinafinance.cashout.pojo.WithdrawalBank;
+import com.sinafinance.pojo.WithdrawalBank;
 
 import java.util.List;
 
