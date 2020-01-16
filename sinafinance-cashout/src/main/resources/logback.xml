@@ -13,7 +13,7 @@
 
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--<file>/home/work/appdata/logs/${JPAAS_HOST}_${JPAAS_HTTP_PORT}/ams.log</file>-->
-        <file>caas/caas.log</file>
+        <file>cashout/cashout.log</file>
         <!--<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">-->
         <!--<fileNamePattern>/home/work/appdata/logs/${JPAAS_HOST}_${JPAAS_HTTP_PORT}/app.log.%i.gz</fileNamePattern>-->
         <!--<minIndex>1</minIndex>-->
@@ -42,7 +42,7 @@
         <appender-ref ref="STDOUT" />
     </root>
     <!-- project default level -->
-    <logger name="com.attractor.caas" additivity="false">
+    <logger name="com.sinafinance.cashout" additivity="false">
         <level value="debug" />
         <appender-ref ref="rollingFile" />
         <appender-ref ref="STDOUT" />
